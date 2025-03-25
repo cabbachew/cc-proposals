@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Explore learning tracks for your student's mentorship.",
 };
 
-export default function ConsultsPage() {
+export default function TracksPage() {
   return (
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Sample Learning Plans</h1>
@@ -16,7 +16,7 @@ export default function ConsultsPage() {
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-gray-800 border-b pb-2">
             <Link
-              href="/robotics"
+              href="/tracks/robotics-electronics-cad"
               className="flex items-center gap-2 hover:text-blue-600 transition-colors"
             >
               Robotics / Electronics / CAD
