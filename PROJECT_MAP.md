@@ -108,6 +108,7 @@
 - Tailwind CSS for styling
 - shadcn/ui for component library
 - Lucide React for icons
+- Heroicons for outline and solid icons
 - Anthropic API for AI integration
 
 ## Best Practices

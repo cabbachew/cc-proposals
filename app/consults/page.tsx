@@ -1,8 +1,10 @@
 import { Metadata } from "next";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Sample Learning Plans | CC Learning Proposals",
-  description: "View sample learning plans for your student's mentorship.",
+  title: "Learning Tracks",
+  description: "Explore learning tracks for your student's mentorship.",
 };
 
 export default function ConsultsPage() {
@@ -13,7 +15,13 @@ export default function ConsultsPage() {
         {/* Robotics / Electronics / CAD Section */}
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-gray-800 border-b pb-2">
-            Robotics / Electronics / CAD
+            <Link
+              href="/robotics"
+              className="flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              Robotics / Electronics / CAD
+              <ArrowUpRightIcon className="h-5 w-5" />
+            </Link>
           </h2>
           <div className="space-y-6">
             <div className="grid gap-4 md:grid-cols-2">
