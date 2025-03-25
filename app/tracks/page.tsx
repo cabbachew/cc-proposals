@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TracksPage() {
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Sample Learning Plans</h1>
+      <h1 className="text-3xl font-bold mb-6">Learning Tracks</h1>
       <div className="space-y-8">
         {/* Robotics / Electronics / CAD Section */}
         <section className="space-y-4">
