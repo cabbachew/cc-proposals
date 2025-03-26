@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 // import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Cone, Cpu, Zap } from "lucide-react";
+import { Cone, Cpu, Rocket, Zap } from "lucide-react";
 
 export function ProgramParameters() {
   return (
@@ -44,6 +44,12 @@ export function ProgramParameters() {
                 <div className="flex items-center gap-2">
                   <Cone className="h-4 w-4 shrink-0" />
                   <span>CAD</span>
+                </div>
+              </SelectItem>
+              <SelectItem value="aerospace">
+                <div className="flex items-center gap-2">
+                  <Rocket className="h-4 w-4 shrink-0" />
+                  <span>Aerospace</span>
                 </div>
               </SelectItem>
             </SelectContent>
