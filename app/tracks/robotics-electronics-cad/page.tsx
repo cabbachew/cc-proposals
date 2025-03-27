@@ -18,9 +18,49 @@ import {
   Wrench,
   ClipboardCheck,
   RefreshCw,
+  Loader2,
 } from "lucide-react";
+import { useState } from "react";
+
+interface Parameters {
+  track: string;
+  level: string;
+  interests: string;
+}
 
 export default function RoboticsTrackPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [result, setResult] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (parameters: Parameters) => {
+    setIsLoading(true);
+    setError(null);
+    setResult(null);
+
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ parameters }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to generate response");
+      }
+
+      setResult(data.content);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">
@@ -29,7 +69,7 @@ export default function RoboticsTrackPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-1">
-          <ProgramParameters />
+          <ProgramParameters onSubmit={handleSubmit} />
         </div>
         <div className="md:col-span-2 min-h-[400px] rounded-lg border bg-card p-6">
           <Timeline className="relative">
@@ -123,6 +163,27 @@ export default function RoboticsTrackPage() {
             </TimelineItem>
           </Timeline>
         </div>
+      </div>
+
+      <div className="mt-8 rounded-lg border bg-card p-6">
+        <h2 className="text-2xl font-semibold mb-4">Generated Learning Path</h2>
+        {isLoading ? (
+          <div className="flex items-center justify-center py-8">
+            <Loader2 className="h-8 w-8 animate-spin" />
+          </div>
+        ) : error ? (
+          <div className="text-red-500">{error}</div>
+        ) : result ? (
+          <div className="prose prose-sm max-w-none">
+            {result.split("\n").map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted-foreground">
+            Submit the form above to generate a personalized learning path.
+          </p>
+        )}
       </div>
     </main>
   );
