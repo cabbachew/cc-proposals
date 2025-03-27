@@ -95,10 +95,45 @@ export function getProjectsOnlyPrompt(parameters: ProgramParameters): string {
       ? "STEM education, with flexibility across robotics, electronics, CAD, and aerospace"
       : parameters.track;
 
-  return `Here's our learning framework for hands-on / hardware engineering mentorship engagements: ${baseContext}
+  // Define specific criteria for each level
+  let levelGuidance = "";
+  if (parameters.level === "beginner") {
+    levelGuidance = `
+For BEGINNER level projects:
+- No prior coding or electronics experience required
+- Use only the most basic components (LEDs, buttons, simple sensors)
+- Focus on single-function devices with minimal complexity
+- Include detailed step-by-step instructions
+- Projects should be completable in 1-3 sessions
+- Examples: Basic LED circuit, simple cardboard mechanisms, introductory CAD models
+`;
+  } else if (parameters.level === "intermediate") {
+    levelGuidance = `
+For INTERMEDIATE level projects:
+- Assumes basic familiarity with coding concepts and basic electronics
+- Incorporate 2-3 different components or subsystems
+- Projects should take 3-5 sessions to complete
+- Some troubleshooting expected but with guided support
+- Examples: Simple robots with 1-2 sensors, interactive devices, moderately complex CAD designs
+`;
+  } else if (parameters.level === "advanced") {
+    levelGuidance = `
+For ADVANCED level projects:
+- Assumes prior experience with coding and basic electronics projects
+- Incorporate multiple sensors, actuators, or complex mechanisms
+- Projects may involve custom algorithms or advanced design
+- Greater independence in implementation expected
+- Projects typically take 5+ sessions to complete
+- Examples: Autonomous robots, complex control systems, advanced CAD with moving parts
+`;
+  }
+
+  return `${baseContext}
 
 You are an expert curriculum designer for ${trackText} at the ${parameters.level} level.
 The student's interests include: ${parameters.interests}
+
+${levelGuidance}
 
 Please create three sample project proposals that follow this exact JSON structure:
 
@@ -122,10 +157,10 @@ Please create three sample project proposals that follow this exact JSON structu
 Important guidelines for creating these projects:
 
 1. Create projects that are specifically appropriate for a virtual 1:1 mentorship between a middle/high school student and a college-aged mentor.
-2. Ensure the projects match the student's ${parameters.level} level and incorporate their interests in ${parameters.interests}.
+2. Ensure the projects STRICTLY match the ${parameters.level} level criteria defined above and incorporate their interests in ${parameters.interests}.
 3. The projects must be ACHIEVABLE in a virtual setting without requiring specialized equipment. Focus on tools that are accessible (like free software, basic electronics kits, or household items).
 4. Make each project DIFFERENT from the others but at the SAME DIFFICULTY LEVEL.
-5. Here are some popular project topics ideas to reference: ${exampleProjectIdeas}
+5. Be careful not to suggest projects that are MORE ADVANCED than the specified level.
 
 VERY IMPORTANT: Your response should be ONLY the raw JSON object, with no markdown formatting, no code blocks (like \`\`\`json), and nothing else before or after. Return only valid, parseable JSON.`;
 }

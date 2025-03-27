@@ -52,6 +52,11 @@ export default function RoboticsTrackPage() {
   const [error, setError] = useState<string | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [currentParams, setCurrentParams] = useState<Parameters>({
+    track: "",
+    level: "beginner",
+    interests: "",
+  });
 
   // Default timeline steps - this is the base timeline that will always be shown
   const defaultTimelineSteps: TimelineStep[] = [
@@ -92,6 +97,7 @@ export default function RoboticsTrackPage() {
     setIsLoading(true);
     setError(null);
     setSelectedProject(null);
+    setCurrentParams(parameters);
 
     // Initialize projects in loading state
     setProjects([
@@ -198,9 +204,14 @@ export default function RoboticsTrackPage() {
                       </div>
                     ) : (
                       <>
-                        <h3 className="text-lg font-medium">
-                          {project.title || `Project ${index + 1}`}
-                        </h3>
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-lg font-medium">
+                            {project.title || `Project ${index + 1}`}
+                          </h3>
+                          <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                            {currentParams.level || "beginner"}
+                          </span>
+                        </div>
                         <p className="text-muted-foreground">
                           {project.shortDescription ||
                             "No description available"}

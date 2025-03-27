@@ -95,6 +95,14 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
                 <SelectItem value="advanced">Advanced</SelectItem>
               </SelectContent>
             </Select>
+            <p className="text-xs text-muted-foreground">
+              {level === "beginner" &&
+                "Projects suitable for complete beginners with no prior technical experience."}
+              {level === "intermediate" &&
+                "Projects for students with some basic coding or electronics experience."}
+              {level === "advanced" &&
+                "More complex projects for students with significant prior experience."}
+            </p>
           </div>
 
           <div className="space-y-2">
