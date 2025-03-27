@@ -1,10 +1,16 @@
-import { Metadata } from "next";
-import { ProgramParameters } from "@/app/components/ProgramParameters";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Robotics / Electronics / CAD Track",
-  description: "Explore the robotics, electronics, and CAD learning track.",
-};
+import { ProgramParameters } from "@/app/components/ProgramParameters";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineDot,
+  TimelineConnector,
+  TimelineContent,
+  TimelineTitle,
+  TimelineDescription,
+} from "@/components/ui/timeline";
 
 export default function RoboticsTrackPage() {
   return (
@@ -18,9 +24,84 @@ export default function RoboticsTrackPage() {
           <ProgramParameters />
         </div>
         <div className="md:col-span-2 min-h-[400px] rounded-lg border bg-card p-6">
-          <div className="text-center text-muted-foreground">
-            Select parameters to generate a sample program
-          </div>
+          <Timeline className="relative">
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Explore</TimelineTitle>
+                <TimelineDescription>
+                  Research and understand the problem space
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Ideate</TimelineTitle>
+                <TimelineDescription>
+                  Generate potential solutions and approaches
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Design</TimelineTitle>
+                <TimelineDescription>
+                  Create detailed plans and specifications
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Build</TimelineTitle>
+                <TimelineDescription>
+                  Implement the solution
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+                <TimelineConnector />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Evaluate</TimelineTitle>
+                <TimelineDescription>
+                  Test and assess the implementation
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+
+            <TimelineItem>
+              <TimelineSeparator>
+                <TimelineDot />
+              </TimelineSeparator>
+              <TimelineContent>
+                <TimelineTitle>Refine</TimelineTitle>
+                <TimelineDescription>
+                  Iterate and improve based on feedback
+                </TimelineDescription>
+              </TimelineContent>
+            </TimelineItem>
+          </Timeline>
         </div>
       </div>
     </main>
