@@ -30,7 +30,15 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await onSubmit({ track, level, interests });
+
+    // Apply defaults if fields are not filled
+    const submissionData = {
+      track: track || "any", // Default to "any" if no focus area selected
+      level: level || "beginner", // Default to "beginner" if no experience level selected
+      interests: interests,
+    };
+
+    await onSubmit(submissionData);
   };
 
   return (
@@ -134,7 +142,7 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
           </div> */}
 
           <Button type="submit" className="w-full font-bold">
-            Generate Learning Path
+            Generate Sample Projects
           </Button>
         </form>
       </CardContent>

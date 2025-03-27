@@ -21,6 +21,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Parameters {
   track: string;
@@ -28,37 +29,134 @@ interface Parameters {
   interests: string;
 }
 
+interface TimelineStep {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+interface Project {
+  title: string;
+  shortDescription: string;
+  isLoading?: boolean;
+}
+
+// Define a type for the API response project
+interface ApiProject {
+  title: string;
+  shortDescription: string;
+}
+
 export default function RoboticsTrackPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  // Default timeline steps - this is the base timeline that will always be shown
+  const defaultTimelineSteps: TimelineStep[] = [
+    {
+      title: "Explore",
+      description: "Research and understand the problem space",
+      icon: <Search className="h-4 w-4" />,
+    },
+    {
+      title: "Ideate",
+      description: "Generate potential solutions and approaches",
+      icon: <Lightbulb className="h-4 w-4" />,
+    },
+    {
+      title: "Design",
+      description: "Create detailed plans and specifications",
+      icon: <PenTool className="h-4 w-4" />,
+    },
+    {
+      title: "Build",
+      description: "Implement the solution",
+      icon: <Wrench className="h-4 w-4" />,
+    },
+    {
+      title: "Evaluate",
+      description: "Test and assess the implementation",
+      icon: <ClipboardCheck className="h-4 w-4" />,
+    },
+    {
+      title: "Refine",
+      description: "Iterate and improve based on feedback",
+      icon: <RefreshCw className="h-4 w-4" />,
+    },
+  ];
 
   const handleSubmit = async (parameters: Parameters) => {
+    // Reset all states
     setIsLoading(true);
     setError(null);
-    setResult(null);
+    setSelectedProject(null);
+
+    // Initialize projects in loading state
+    setProjects([
+      { title: "Project 1", shortDescription: "Loading...", isLoading: true },
+      { title: "Project 2", shortDescription: "Loading...", isLoading: true },
+      { title: "Project 3", shortDescription: "Loading...", isLoading: true },
+    ]);
 
     try {
-      const response = await fetch("/api/generate", {
+      // Fetch project ideas
+      const projectsResponse = await fetch("/api/generate", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ parameters }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          parameters,
+        }),
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to generate response");
+      if (!projectsResponse.ok) {
+        throw new Error("Failed to generate projects");
       }
 
-      setResult(data.content);
+      const projectsData = await projectsResponse.json();
+
+      // Process project data
+      let jsonData;
+      try {
+        const cleanedContent = projectsData.content
+          .replace(/^```(json)?/m, "")
+          .replace(/```$/m, "")
+          .trim();
+        jsonData = JSON.parse(cleanedContent);
+      } catch {
+        try {
+          jsonData = JSON.parse(projectsData.content);
+        } catch {
+          throw new Error("Could not parse project data");
+        }
+      }
+
+      if (!jsonData?.projects || !Array.isArray(jsonData.projects)) {
+        throw new Error("Invalid project data format");
+      }
+
+      // Update state with received projects
+      const receivedProjects = jsonData.projects.map((project: ApiProject) => ({
+        title: project.title,
+        shortDescription: project.shortDescription,
+        isLoading: false,
+      }));
+
+      setProjects(receivedProjects);
+      setSelectedProject(0); // Select first project
     } catch (err) {
+      console.error("Error in overall process:", err);
       setError(err instanceof Error ? err.message : "An error occurred");
+      setProjects([]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Function to select a project and show its timeline
+  const handleProjectSelect = (index: number) => {
+    setSelectedProject(index);
   };
 
   return (
@@ -68,122 +166,96 @@ export default function RoboticsTrackPage() {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-1">
+        <div className="md:col-span-1 space-y-6">
           <ProgramParameters onSubmit={handleSubmit} />
+
+          <Card className="w-full border-none shadow-none">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle>Sample Projects</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 px-0">
+              {isLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <Loader2 className="h-8 w-8 animate-spin" />
+                </div>
+              ) : error ? (
+                <div className="text-red-500">{error}</div>
+              ) : projects.length > 0 ? (
+                projects.map((project, index) => (
+                  <div
+                    key={index}
+                    className={`space-y-2 cursor-pointer border rounded-md p-3 transition-all ${
+                      selectedProject === index
+                        ? "border-primary border-2 shadow-sm"
+                        : "border-muted hover:border-muted-foreground"
+                    }`}
+                    onClick={() => handleProjectSelect(index)}
+                  >
+                    {project.isLoading ? (
+                      <div className="flex items-center">
+                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                        <p>Generating project...</p>
+                      </div>
+                    ) : (
+                      <>
+                        <h3 className="text-lg font-medium">
+                          {project.title || `Project ${index + 1}`}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {project.shortDescription ||
+                            "No description available"}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted-foreground">
+                  Use the parameters above to generate sample projects.
+                </p>
+              )}
+            </CardContent>
+          </Card>
         </div>
-        <div className="md:col-span-2 min-h-[400px] rounded-lg border bg-card p-6">
-          <Timeline className="relative">
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <Search className="h-4 w-4" />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Explore</TimelineTitle>
-                <TimelineDescription>
-                  Research and understand the problem space
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
 
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <Lightbulb className="h-4 w-4" />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Ideate</TimelineTitle>
-                <TimelineDescription>
-                  Generate potential solutions and approaches
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <PenTool className="h-4 w-4" />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Design</TimelineTitle>
-                <TimelineDescription>
-                  Create detailed plans and specifications
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <Wrench className="h-4 w-4" />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Build</TimelineTitle>
-                <TimelineDescription>
-                  Implement the solution
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <ClipboardCheck className="h-4 w-4" />
-                </TimelineDot>
-                <TimelineConnector />
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Evaluate</TimelineTitle>
-                <TimelineDescription>
-                  Test and assess the implementation
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot>
-                  <RefreshCw className="h-4 w-4" />
-                </TimelineDot>
-              </TimelineSeparator>
-              <TimelineContent>
-                <TimelineTitle>Refine</TimelineTitle>
-                <TimelineDescription>
-                  Iterate and improve based on feedback
-                </TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-          </Timeline>
+        <div className="md:col-span-2">
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>Project Timeline</CardTitle>
+              {selectedProject !== null && projects.length > 0 && (
+                <p className="text-sm text-muted-foreground">
+                  {projects[selectedProject]?.title || "Project Timeline"}
+                </p>
+              )}
+            </CardHeader>
+            <CardContent>
+              {projects.length > 0 && selectedProject !== null ? (
+                <Timeline className="relative">
+                  {defaultTimelineSteps.map((step, index) => (
+                    <TimelineItem key={index}>
+                      <TimelineSeparator>
+                        <TimelineDot>{step.icon}</TimelineDot>
+                        {index < defaultTimelineSteps.length - 1 && (
+                          <TimelineConnector />
+                        )}
+                      </TimelineSeparator>
+                      <TimelineContent>
+                        <TimelineTitle>{step.title}</TimelineTitle>
+                        <TimelineDescription>
+                          {step.description}
+                        </TimelineDescription>
+                      </TimelineContent>
+                    </TimelineItem>
+                  ))}
+                </Timeline>
+              ) : (
+                <p className="text-muted-foreground">
+                  Select a project to view its timeline.
+                </p>
+              )}
+            </CardContent>
+          </Card>
         </div>
-      </div>
-
-      <div className="mt-8 rounded-lg border bg-card p-6">
-        <h2 className="text-2xl font-semibold mb-4">Generated Learning Path</h2>
-        {isLoading ? (
-          <div className="flex items-center justify-center py-8">
-            <Loader2 className="h-8 w-8 animate-spin" />
-          </div>
-        ) : error ? (
-          <div className="text-red-500">{error}</div>
-        ) : result ? (
-          <div className="prose prose-sm max-w-none">
-            {result.split("\n").map((line, i) => (
-              <p key={i}>{line}</p>
-            ))}
-          </div>
-        ) : (
-          <p className="text-muted-foreground">
-            Submit the form above to generate a personalized learning path.
-          </p>
-        )}
       </div>
     </main>
   );

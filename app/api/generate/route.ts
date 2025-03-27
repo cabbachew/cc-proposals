@@ -1,20 +1,32 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { getPrompt } from "@/lib/prompts";
+import { getProjectsOnlyPrompt } from "@/lib/prompts";
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 });
+
+// Function to clean the model's response from Markdown formatting
+function cleanResponse(text: string): string {
+  // Remove Markdown code block formatting
+  let cleaned = text.replace(/^```(json)?/m, "").replace(/```$/m, "");
+
+  // Trim whitespace
+  cleaned = cleaned.trim();
+
+  return cleaned;
+}
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { parameters } = body;
 
-    const prompt = getPrompt(parameters);
+    // Only generate sample projects
+    const prompt = getProjectsOnlyPrompt(parameters);
 
     const message = await anthropic.messages.create({
-      model: "claude-3-7-sonnet-20250219",
+      model: "claude-3-5-sonnet-latest",
       max_tokens: 4096,
       messages: [
         {
@@ -24,9 +36,13 @@ export async function POST(req: Request) {
       ],
     });
 
+    let content = "";
+    if (message.content[0].type === "text") {
+      content = cleanResponse(message.content[0].text);
+    }
+
     return NextResponse.json({
-      content:
-        message.content[0].type === "text" ? message.content[0].text : "",
+      content,
       success: true,
     });
   } catch (error) {
