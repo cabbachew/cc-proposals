@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { getProjectsOnlyPrompt } from "@/lib/prompts";
+import { getSampleProjectsPrompt } from "@/lib/prompts";
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     const { parameters } = body;
 
     // Only generate sample projects
-    const prompt = getProjectsOnlyPrompt(parameters);
+    const prompt = getSampleProjectsPrompt(parameters);
 
     const message = await anthropic.messages.create({
       model: "claude-3-5-sonnet-latest",

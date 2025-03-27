@@ -17,14 +17,14 @@ import { useState } from "react";
 
 interface ProgramParametersProps {
   onSubmit: (parameters: {
-    track: string;
+    focusArea: string;
     level: string;
     interests: string;
   }) => Promise<void>;
 }
 
 export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
-  const [track, setTrack] = useState<string>("");
+  const [focusArea, setFocusArea] = useState<string>("");
   const [level, setLevel] = useState<string>("");
   const [interests, setInterests] = useState<string>("");
 
@@ -33,8 +33,8 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
 
     // Apply defaults if fields are not filled
     const submissionData = {
-      track: track || "any", // Default to "any" if no focus area selected
-      level: level || "beginner", // Default to "beginner" if no experience level selected
+      focusArea: focusArea || "any", // Default to "any" if no focus area selected
+      level: level || "mixed", // Default to "mixed" if no experience level selected
       interests: interests,
     };
 
@@ -50,7 +50,7 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="domain">Focus Area</Label>
-            <Select value={track} onValueChange={setTrack}>
+            <Select value={focusArea} onValueChange={setFocusArea}>
               <SelectTrigger id="domain">
                 <SelectValue placeholder="Select domain" />
               </SelectTrigger>

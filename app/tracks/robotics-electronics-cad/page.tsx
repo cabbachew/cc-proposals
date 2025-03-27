@@ -24,8 +24,8 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Parameters {
-  track: string;
-  level: string;
+  focusArea: string;
+  level?: string;
   interests: string;
   count?: number;
 }
@@ -39,6 +39,7 @@ interface TimelineStep {
 interface Project {
   title: string;
   shortDescription: string;
+  difficulty?: string;
   isLoading?: boolean;
 }
 
@@ -46,6 +47,7 @@ interface Project {
 interface ApiProject {
   title: string;
   shortDescription: string;
+  difficulty: string;
 }
 
 export default function RoboticsTrackPage() {
@@ -54,7 +56,7 @@ export default function RoboticsTrackPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentParams, setCurrentParams] = useState<Parameters>({
-    track: "",
+    focusArea: "",
     level: "beginner",
     interests: "",
   });
@@ -93,12 +95,20 @@ export default function RoboticsTrackPage() {
     },
   ];
 
-  const handleSubmit = async (parameters: Parameters) => {
+  const handleSubmit = async (parameters: {
+    focusArea: string;
+    level: string;
+    interests: string;
+  }) => {
     // Reset all states
     setIsLoading(true);
     setError(null);
     setSelectedProject(null);
-    setCurrentParams(parameters);
+    setCurrentParams({
+      focusArea: parameters.focusArea,
+      level: parameters.level,
+      interests: parameters.interests,
+    });
 
     // Initialize projects in loading state
     setProjects([
@@ -152,6 +162,7 @@ export default function RoboticsTrackPage() {
       const receivedProjects = jsonData.projects.map((project: ApiProject) => ({
         title: project.title,
         shortDescription: project.shortDescription,
+        difficulty: project.difficulty,
         isLoading: false,
       }));
 
@@ -184,10 +195,6 @@ export default function RoboticsTrackPage() {
           <Card className="w-full">
             <CardHeader>
               <CardTitle>Project Phases</CardTitle>
-              <p className="text-sm text-muted-foreground">
-                Standard development process for electronics and robotics
-                projects
-              </p>
             </CardHeader>
             <CardContent>
               <Timeline className="relative">
@@ -248,7 +255,9 @@ export default function RoboticsTrackPage() {
                               {project.title || `Project ${index + 1}`}
                             </h3>
                             <span className="text-xs bg-muted px-2 py-1 rounded-full">
-                              {currentParams.level || "beginner"}
+                              {project.difficulty ||
+                                currentParams.level ||
+                                "mixed"}
                             </span>
                           </div>
                           <p className="text-muted-foreground">
