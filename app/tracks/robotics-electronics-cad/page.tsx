@@ -11,6 +11,14 @@ import {
   TimelineTitle,
   TimelineDescription,
 } from "@/components/ui/timeline";
+import {
+  Search,
+  Lightbulb,
+  PenTool,
+  Wrench,
+  ClipboardCheck,
+  RefreshCw,
+} from "lucide-react";
 
 export default function RoboticsTrackPage() {
   return (
@@ -27,7 +35,9 @@ export default function RoboticsTrackPage() {
           <Timeline className="relative">
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <Search className="h-4 w-4" />
+                </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
@@ -40,7 +50,9 @@ export default function RoboticsTrackPage() {
 
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <Lightbulb className="h-4 w-4" />
+                </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
@@ -53,7 +65,9 @@ export default function RoboticsTrackPage() {
 
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <PenTool className="h-4 w-4" />
+                </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
@@ -66,7 +80,9 @@ export default function RoboticsTrackPage() {
 
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <Wrench className="h-4 w-4" />
+                </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
@@ -79,7 +95,9 @@ export default function RoboticsTrackPage() {
 
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <ClipboardCheck className="h-4 w-4" />
+                </TimelineDot>
                 <TimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
@@ -92,7 +110,9 @@ export default function RoboticsTrackPage() {
 
             <TimelineItem>
               <TimelineSeparator>
-                <TimelineDot />
+                <TimelineDot>
+                  <RefreshCw className="h-4 w-4" />
+                </TimelineDot>
               </TimelineSeparator>
               <TimelineContent>
                 <TimelineTitle>Refine</TimelineTitle>
