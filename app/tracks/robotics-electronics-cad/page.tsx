@@ -27,6 +27,7 @@ interface Parameters {
   track: string;
   level: string;
   interests: string;
+  count?: number;
 }
 
 interface TimelineStep {
@@ -104,6 +105,8 @@ export default function RoboticsTrackPage() {
       { title: "Project 1", shortDescription: "Loading...", isLoading: true },
       { title: "Project 2", shortDescription: "Loading...", isLoading: true },
       { title: "Project 3", shortDescription: "Loading...", isLoading: true },
+      { title: "Project 4", shortDescription: "Loading...", isLoading: true },
+      { title: "Project 5", shortDescription: "Loading...", isLoading: true },
     ]);
 
     try {
@@ -112,7 +115,10 @@ export default function RoboticsTrackPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          parameters,
+          parameters: {
+            ...parameters,
+            count: 5, // Request 5 projects specifically
+          },
         }),
       });
 
@@ -175,6 +181,38 @@ export default function RoboticsTrackPage() {
         <div className="md:col-span-1 space-y-6">
           <ProgramParameters onSubmit={handleSubmit} />
 
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>Project Phases</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Standard development process for electronics and robotics
+                projects
+              </p>
+            </CardHeader>
+            <CardContent>
+              <Timeline className="relative">
+                {defaultTimelineSteps.map((step, index) => (
+                  <TimelineItem key={index}>
+                    <TimelineSeparator>
+                      <TimelineDot>{step.icon}</TimelineDot>
+                      {index < defaultTimelineSteps.length - 1 && (
+                        <TimelineConnector />
+                      )}
+                    </TimelineSeparator>
+                    <TimelineContent>
+                      <TimelineTitle>{step.title}</TimelineTitle>
+                      <TimelineDescription>
+                        {step.description}
+                      </TimelineDescription>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </Timeline>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="md:col-span-2">
           <Card className="w-full border-none shadow-none">
             <CardHeader className="px-0 pt-0">
               <CardTitle>Sample Projects</CardTitle>
@@ -187,81 +225,44 @@ export default function RoboticsTrackPage() {
               ) : error ? (
                 <div className="text-red-500">{error}</div>
               ) : projects.length > 0 ? (
-                projects.map((project, index) => (
-                  <div
-                    key={index}
-                    className={`space-y-2 cursor-pointer border rounded-md p-3 transition-all ${
-                      selectedProject === index
-                        ? "border-primary border-2 shadow-sm"
-                        : "border-muted hover:border-muted-foreground"
-                    }`}
-                    onClick={() => handleProjectSelect(index)}
-                  >
-                    {project.isLoading ? (
-                      <div className="flex items-center">
-                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                        <p>Generating project...</p>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="flex justify-between items-start">
-                          <h3 className="text-lg font-medium">
-                            {project.title || `Project ${index + 1}`}
-                          </h3>
-                          <span className="text-xs bg-muted px-2 py-1 rounded-full">
-                            {currentParams.level || "beginner"}
-                          </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {projects.map((project, index) => (
+                    <div
+                      key={index}
+                      className={`space-y-2 cursor-pointer border rounded-md p-3 transition-all h-full ${
+                        selectedProject === index
+                          ? "border-primary border-2 shadow-sm"
+                          : "border-muted hover:border-muted-foreground"
+                      }`}
+                      onClick={() => handleProjectSelect(index)}
+                    >
+                      {project.isLoading ? (
+                        <div className="flex items-center">
+                          <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                          <p>Generating project...</p>
                         </div>
-                        <p className="text-muted-foreground">
-                          {project.shortDescription ||
-                            "No description available"}
-                        </p>
-                      </>
-                    )}
-                  </div>
-                ))
+                      ) : (
+                        <>
+                          <div className="flex justify-between items-start">
+                            <h3 className="text-lg font-medium">
+                              {project.title || `Project ${index + 1}`}
+                            </h3>
+                            <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                              {currentParams.level || "beginner"}
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">
+                            {project.shortDescription ||
+                              "No description available"}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <p className="text-muted-foreground">
                   Use the parameters above to generate sample projects.
-                </p>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="md:col-span-2">
-          <Card className="w-full">
-            <CardHeader>
-              <CardTitle>Project Timeline</CardTitle>
-              {selectedProject !== null && projects.length > 0 && (
-                <p className="text-sm text-muted-foreground">
-                  {projects[selectedProject]?.title || "Project Timeline"}
-                </p>
-              )}
-            </CardHeader>
-            <CardContent>
-              {projects.length > 0 && selectedProject !== null ? (
-                <Timeline className="relative">
-                  {defaultTimelineSteps.map((step, index) => (
-                    <TimelineItem key={index}>
-                      <TimelineSeparator>
-                        <TimelineDot>{step.icon}</TimelineDot>
-                        {index < defaultTimelineSteps.length - 1 && (
-                          <TimelineConnector />
-                        )}
-                      </TimelineSeparator>
-                      <TimelineContent>
-                        <TimelineTitle>{step.title}</TimelineTitle>
-                        <TimelineDescription>
-                          {step.description}
-                        </TimelineDescription>
-                      </TimelineContent>
-                    </TimelineItem>
-                  ))}
-                </Timeline>
-              ) : (
-                <p className="text-muted-foreground">
-                  Select a project to view its timeline.
                 </p>
               )}
             </CardContent>

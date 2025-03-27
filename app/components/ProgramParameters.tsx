@@ -111,7 +111,7 @@ export function ProgramParameters({ onSubmit }: ProgramParametersProps) {
               id="interests"
               value={interests}
               onChange={(e) => setInterests(e.target.value)}
-              placeholder="e.g., mechanics, electronics, UI design"
+              placeholder="e.g., aviation, healthcare, space exploration, 3D printing"
               className="w-full"
             />
             <p className="text-xs text-muted-foreground">

@@ -2,6 +2,7 @@ interface ProgramParameters {
   track: string;
   level: string;
   interests: string;
+  count?: number;
 }
 
 interface ProjectDeliverable {
@@ -95,6 +96,9 @@ export function getProjectsOnlyPrompt(parameters: ProgramParameters): string {
       ? "STEM education, with flexibility across robotics, electronics, CAD, and aerospace"
       : parameters.track;
 
+  // Get number of projects to generate, default to 5 if not specified
+  const projectCount = parameters.count || 5;
+
   // Define specific criteria for each level
   let levelGuidance = "";
   if (parameters.level === "beginner") {
@@ -128,6 +132,17 @@ For ADVANCED level projects:
 `;
   }
 
+  // Generate the project structure based on the requested count
+  let projectStructure = '{\n  "projects": [';
+  for (let i = 1; i <= projectCount; i++) {
+    projectStructure += `
+    {
+      "title": "Project ${i} Title",
+      "shortDescription": "One-sentence description of project ${i}"
+    }${i < projectCount ? "," : ""}`;
+  }
+  projectStructure += "\n  ]\n}";
+
   return `${baseContext}
 
 You are an expert curriculum designer for ${trackText} at the ${parameters.level} level.
@@ -135,24 +150,9 @@ The student's interests include: ${parameters.interests}
 
 ${levelGuidance}
 
-Please create three sample project proposals that follow this exact JSON structure:
+Please create ${projectCount} sample project proposals that follow this exact JSON structure:
 
-{
-  "projects": [
-    {
-      "title": "Project 1 Title",
-      "shortDescription": "One-sentence description of the first project"
-    },
-    {
-      "title": "Project 2 Title",
-      "shortDescription": "One-sentence description of the second project"
-    },
-    {
-      "title": "Project 3 Title",
-      "shortDescription": "One-sentence description of the third project"
-    }
-  ]
-}
+${projectStructure}
 
 Important guidelines for creating these projects:
 
