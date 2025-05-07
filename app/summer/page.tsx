@@ -11,7 +11,7 @@ export default function SummerPage() {
       <h1 className="text-4xl font-bold mb-6">Summer Programs</h1>
       <div className="prose max-w-none">
         <p className="text-lg text-gray-700">
-          Welcome to our summer programs page. Here you'll find information
+          Welcome to our summer programs page. Here you&apos;ll find information
           about various summer learning opportunities and activities.
         </p>
       </div>
