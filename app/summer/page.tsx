@@ -397,6 +397,122 @@ export default function SummerPage() {
               </li>
             </ul>
           </div>
+
+          <div className="grid grid-cols-1 gap-6 mt-8">
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Exploring & Planning Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 1-3</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Identify strengths, interests, and portfolio direction
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Study successful examples in your chosen field
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Begin learning necessary technical skills
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Project concept and initial plan
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Prototype Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 4-7</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create detailed project specifications
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop initial prototype or mockup
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Gather feedback and refine project vision
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Working prototype and development plan
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Build & Develop Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 8-17</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Build your project with regular feedback cycles
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Overcome technical challenges with mentor guidance
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Document your creative process and decision-making
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Substantial project development with portfolio
+                structure
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Presentation Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 18-20</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Finalize your project for presentation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create or enhance portfolio presentation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Practice presenting: what you built, why it matters,
+                    challenges overcome, and future plans
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Completed project with portfolio presentation
+              </p>
+            </div>
+          </div>
         </TabsContent>
 
         <TabsContent value="research" className="mt-6">
@@ -430,6 +546,122 @@ export default function SummerPage() {
                 </span>
               </li>
             </ul>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 mt-8">
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Discovery & Planning Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 1-3</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Explore personal research interests and potential topics
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Learn research fundamentals and methodologies
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Conduct preliminary literature review on chosen area
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Research question and initial proposal
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Design Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 4-7</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop detailed research methodology
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create data collection plan and tools
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Begin preliminary research or experiment design
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Complete research plan with timeline
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Execution & Analysis Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 8-17</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Conduct research, experiments, or data collection
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Analyze findings and develop conclusions
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Draft research paper or presentation materials
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Substantial draft with key findings
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Presentation Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 18-20</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Refine final research paper or presentation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create compelling visuals and supporting materials
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Practice presentation: what you did, why it matters, what
+                    you learned, and future directions
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Completed research project and symposium
+                presentation
+              </p>
+            </div>
           </div>
         </TabsContent>
 
@@ -466,6 +698,121 @@ export default function SummerPage() {
               </li>
             </ul>
           </div>
+
+          <div className="grid grid-cols-1 gap-6 mt-8">
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Vision & Research Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 1-3</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Identify causes aligned with your values and community needs
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Research existing organizations and potential gaps
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop initial mission and vision statements
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Organization concept and mission
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Design Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 4-7</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create detailed organization structure and plan
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop branding, messaging, and visual identity
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Define success metrics and impact goals
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Organization design and roadmap
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Execution Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 8-17</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Build digital presence (website, social media)
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Start recruiting team members or building partnerships
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop key materials, resources, or initial offering
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Minimum viable organization with digital presence
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Presentation Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 18-20</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Finalize organization materials and structure
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create compelling pitch presentation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Practice presenting: what you created, why it matters,
+                    challenges overcome, and future plans
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Organization concept with presentation
+              </p>
+            </div>
+          </div>
         </TabsContent>
 
         <TabsContent value="content" className="mt-6">
@@ -499,6 +846,125 @@ export default function SummerPage() {
                 </span>
               </li>
             </ul>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 mt-8">
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Discovery & Planning Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 1-3</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Identify your content niche and target audience
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Choose platform and content format
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop your unique voice and content approach
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Content strategy and platform selection
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">
+                Development & Initial Launch
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 4-7</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Learn technical skills for your chosen medium
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create content calendar and production schedule
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Launch platform and publish first content piece
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Platform launch with initial content
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">
+                Experimentation & Refinement
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 8-17</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create and publish multiple content pieces
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Experiment with different formats and approaches
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Refine your style based on feedback
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Consistent content series with developed style
+              </p>
+            </div>
+
+            <div className="border-2 border-[#a7f3d0] p-6 shadow-[0_2px_4px_rgba(0,0,0,0.05)]">
+              <h3 className="font-semibold mb-2">Presentation Phase</h3>
+              <p className="text-sm text-gray-600 mb-4">Sessions 18-20</p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Create portfolio of your best content pieces
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Develop plans for continued content creation
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">
+                    Practice presenting: what you created, why it matters, what
+                    you learned, and future plans
+                  </span>
+                </li>
+              </ul>
+              <p className="text-sm font-medium">
+                Deliverable: Content platform showcase for symposium
+              </p>
+            </div>
           </div>
         </TabsContent>
       </Tabs>
