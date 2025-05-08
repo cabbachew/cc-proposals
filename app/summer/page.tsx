@@ -8,6 +8,23 @@ import {
   FileText,
 } from "lucide-react";
 import Image from "next/image";
+import { Manrope, Roboto_Mono, Inter } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["800"], // ExtraBold
+  variable: "--font-manrope",
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Summer Programs | CC Learning Proposals",
@@ -16,16 +33,26 @@ export const metadata: Metadata = {
 
 export default function SummerPage() {
   return (
-    <main className="container mx-auto px-4 py-8">
-      <div className="flex items-center gap-4 mb-6">
-        <Image
-          src="/blobIcon.svg"
-          alt="Blob Icon"
-          width={48}
-          height={48}
-          className="w-12 h-12"
-        />
-        <h1 className="text-4xl font-bold">Timeless Skills. Real Impact.</h1>
+    <main
+      className={`container mx-auto px-4 py-8 ${manrope.variable} ${robotoMono.variable} ${inter.variable}`}
+    >
+      <div className="flex flex-col gap-2 mb-6">
+        <div className="flex items-center gap-4">
+          <Image
+            src="/blobIcon.svg"
+            alt="Blob Icon"
+            width={48}
+            height={48}
+            className="w-10 h-10"
+          />
+          <h1 className="text-2xl font-bold font-manrope">
+            2025 Summer: Intensive Project Launch
+          </h1>
+        </div>
+        <p className="text-md text-gray-600 font-inter">
+          Timeless Skills. Real Impact. Transform Your Summer with a Powerful
+          Project
+        </p>
       </div>
 
       <Tabs defaultValue="overview" className="w-full">
