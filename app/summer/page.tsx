@@ -5,8 +5,9 @@ import {
   Briefcase,
   Microscope,
   Rocket,
-  FileText,
+  Clapperboard,
   Check,
+  Dot,
 } from "lucide-react";
 import Image from "next/image";
 import { Manrope, Roboto_Mono, Inter } from "next/font/google";
@@ -98,7 +99,7 @@ export default function SummerPage() {
             value="content"
             className="relative text-gray-500 px-4 py-2 data-[state=active]:text-black data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:w-full data-[state=active]:after:h-0.5 data-[state=active]:after:bg-[#fbc012]"
           >
-            <FileText className="w-4 h-4 mr-2 inline" />
+            <Clapperboard className="w-4 h-4 mr-2 inline" />
             Content
           </TabsTrigger>
         </TabsList>
@@ -156,7 +157,7 @@ export default function SummerPage() {
                   </TableHead>
                   <TableHead>
                     <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4" />
+                      <Clapperboard className="w-4 h-4" />
                       Content
                     </div>
                   </TableHead>
@@ -190,15 +191,15 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Research paper
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Literature review
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Research presentation
                       </li>
                     </ul>
@@ -206,23 +207,23 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Portfolio website
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Completed project
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Prototype
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Digital or physical creation
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Design portfolio
                       </li>
                     </ul>
@@ -230,15 +231,15 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Business concept
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Nonprofit/community initiative
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         School organization plan
                       </li>
                     </ul>
@@ -246,15 +247,15 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Written publication
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Social media presence
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Podcast/interview series
                       </li>
                     </ul>
@@ -267,19 +268,19 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Academic research methods
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Critical analysis
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Scientific writing
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Data analysis
                       </li>
                     </ul>
@@ -287,19 +288,19 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Technical/creative skills
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Project development
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Design thinking
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Presentation
                       </li>
                     </ul>
@@ -307,23 +308,23 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Leadership
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Strategic planning
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Team building
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Communication
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Organizational management
                       </li>
                     </ul>
@@ -331,23 +332,23 @@ export default function SummerPage() {
                   <TableCell>
                     <ul className="list-none space-y-1">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Content creation
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Audience building
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Personal branding
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Multimedia production
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
+                        <Dot className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
                         Storytelling
                       </li>
                     </ul>
