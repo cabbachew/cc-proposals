@@ -7,6 +7,7 @@ import {
   Rocket,
   FileText,
 } from "lucide-react";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Summer Programs | CC Learning Proposals",
@@ -16,7 +17,16 @@ export const metadata: Metadata = {
 export default function SummerPage() {
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">Timeless Skills. Real Impact.</h1>
+      <div className="flex items-center gap-4 mb-6">
+        <Image
+          src="/blobIcon.svg"
+          alt="Blob Icon"
+          width={48}
+          height={48}
+          className="w-12 h-12"
+        />
+        <h1 className="text-4xl font-bold">Timeless Skills. Real Impact.</h1>
+      </div>
 
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="w-full justify-start border-b border-gray-200">
